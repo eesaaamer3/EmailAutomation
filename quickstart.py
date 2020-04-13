@@ -12,18 +12,17 @@ class sendWithNoAttachment:
         
 
 class sendWithAttachments(sendWithNoAttachment):
-    def __init__(self, email, subjectLine, body, *attachments):
+    def __init__(self, email, subjectLine, body, attachments):
         super().__init__(email, subjectLine, body)
-        attachmentsList = [attachment for attachment in attachments]
+        self.attachments = attachments
 
     def senderWithAttach(self):
-        ezgmail.send(self.email, self.subjectLine, self.body, self.attachmentsList)
+        ezgmail.send(self.email, self.subjectLine, self.body, self.attachments)
         
 
 class Introduction:
     def __init__(self):
         pass
-    
     def start(self):
         print("Welcome to the automated email system!")
         initialResp = input("[S]end without attachments or [W]ith attachments?: ")
@@ -45,3 +44,5 @@ if __name__ == "__main__":
         bodyText = input("Body text?: ")
         print("For attachments, please list all attachments seperated with a space")
         attaches = input("Attachments?: ")
+        new_list = [attach for attach in attaches.split(" ")]
+        newSenderWithSome = sendWithAttachments(emails, subject, bodyText, new_list).senderWithAttach()
