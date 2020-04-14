@@ -26,10 +26,20 @@ class Reader:
         ezgmail.summary(unreadThreads)
         
 
-class DownloadAttachments:
-    def __init__(self):
-        pass
+class Downloader:
+    def __init__(self, subjectLine):
+        self.subjectLine = subjectLine
+    
+    def mailFinder(self):
+        mail = ezgmail.search(self.subjectLine)
+        return mail
 
+    def downloadOneAttachment(self, files):
+        filename = input("What is the name of the file?: ")
+        files[0].messages[0].downloadAttachment(filename)
+
+    def downloadAllAttachments(self, files):
+        files[0].messages[0].downloadAllAttachments()
 
 
 class Introduction:
@@ -37,7 +47,7 @@ class Introduction:
         pass
     def start(self):
         print("Welcome to the automated email system!")
-        initialResp = input("[S]end without attachments, [W]ith attachments, or [R]ead?: ")
+        initialResp = input("[S]end without attachments, [W]ith attachments, [R]ead?, or [D]ownload?: ")
         return initialResp
 
 
@@ -59,3 +69,13 @@ if __name__ == "__main__":
         newSenderWithSome = SendWithAttachments(emails, subject, bodyText, new_list).senderWithAttach()
     elif initial == "R":
         newRead = Reader()
+    elif initial == "D":
+        desiredEmail = input("What is the subject line?: ")
+        newDownload = Downloader(desiredEmail)
+        user_choice = input("[O]ne file or [A]ll?: ")
+        if user_choice == "O":
+            newDownload.downloadOneAttachment(newDownload.mailFinder())
+        elif user_choice == "A":
+            newDownload.downloadAllAttachments(newDownload.mailFinder())
+
+
