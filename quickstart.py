@@ -9,6 +9,11 @@ A python script that can read and send emails, while also being
 able to download attachments directly onto the device.
 
 """
+parser = argparse.ArgumentParser(description="Enter valid email information")
+parser.add_argument('Email', type=str, help='Receiver email address')
+parser.add_argument('Subject Line', type=str, help='Subject Line of Email')
+parser.add_argument('Body', type=str, help='Body of Email')
+
 
 class SendWithNoAttachment:
     """ Sends emails without attachments """ 
