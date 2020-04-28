@@ -6,7 +6,7 @@ A python script that can read and send emails, while also being able to download
 ## Disclaimer
 The repository is not complete for a reason. To use the Gmail API and access your account without logging in, two JSON files are required in the working directory. Since those JSON files give access to your email account, I'm not going to include it here. 
 
-## Gmail API/Ezgmail
+## Gmail API
 Before the Gmail API can used, it has to activated [here](https://developers.google.com/gmail/api/quickstart/python/). Once it is activated, it will give you access to a *credentials.json* file that will allow you to access Gmail features. To use the Ezgmail library, pip install ezgmail and user `ezgmail.init()` in the interactive shell to activate it. This will add a *tokens.json* file. 
 
 ## Features
