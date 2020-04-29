@@ -1,7 +1,7 @@
 # Python Email Automation Script
 
 ## Introduction
-A python script that can read and send emails, while also being able to download attachments directly onto the device. The script uses Google's Gmail API and the Ezgmail module to access Gmail accounts without having to log in. 
+A python script that can read and send emails from the command line, while also being able to download attachments directly onto the device. The script uses Google's Gmail API and the Ezgmail module to access Gmail accounts without having to log in.
 
 ## Disclaimer
 The repository is not complete for a reason. To use the Gmail API and access your account without logging in, two JSON files are required in the working directory. Since those JSON files give access to your email account, I'm not going to include it here. 
