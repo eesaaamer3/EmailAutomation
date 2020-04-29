@@ -1,5 +1,3 @@
-import ezgmail
-import argparse
 """
 Eesa Aamer
 Date Created: 11/04/20
@@ -9,15 +7,15 @@ A python script that can read and send emails, while also being
 able to download attachments directly onto the device.
 
 """
+import ezgmail
+import argparse
+
 parser = argparse.ArgumentParser(description="Enter valid email information")
 parser.add_argument('Email', type=str, help='Receiver email address')
 parser.add_argument('SubjectLine', type=str, help='Subject Line of Email')
 parser.add_argument('Body', type=str, help='Body of Email')
 
 args = parser.parse_args()
-
-
-
 
 class SendWithNoAttachment:
     """ Sends emails without attachments """ 
@@ -71,9 +69,6 @@ class Introduction:
     def start(self):
         # Takes in user choice
         print("Welcome to the automated email system!")
-        print(args.Email)
-        print(args.Body)
-        print(args.SubjectLine)
         initialResp = input("[S]end without attachments, [W]ith attachments, [R]ead?, or [D]ownload?: ")
         return initialResp
 
@@ -84,13 +79,10 @@ if __name__ == "__main__":
     if initial == "S": # User wants to send an email
         newSenderWithNone = SendWithNoAttachment(args.Email, args.SubjectLine, args.Body).sender()
     elif initial == "W": # User wants to send email with attachments
-        emails = input("Email Address?: ")
-        subject = input("Subject Line?: ")
-        bodyText = input("Body text?: ")
         print("For attachments, please list all attachments seperated with a space")
         attaches = input("Attachments?: ")
         new_list = [attach for attach in attaches.split(" ")]
-        newSenderWithSome = SendWithAttachments(emails, subject, bodyText, new_list).senderWithAttach()
+        newSenderWithSome = SendWithAttachments(args.Email, args.SubjectLine, args.Body, new_list).senderWithAttach()
     elif initial == "R": # User wants to view recent unread emails
         newRead = Reader()
     elif initial == "D": # User wants to download attachments from file
