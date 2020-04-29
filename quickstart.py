@@ -69,6 +69,7 @@ class Introduction:
     def start(self):
         # Takes in user choice
         print("Welcome to the automated email system!")
+        print(args)
         initialResp = input("[S]end without attachments, [W]ith attachments, [R]ead?, or [D]ownload?: ")
         return initialResp
 
