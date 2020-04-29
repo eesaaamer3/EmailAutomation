@@ -14,6 +14,8 @@ parser.add_argument('Email', type=str, help='Receiver email address')
 parser.add_argument('Subject Line', type=str, help='Subject Line of Email')
 parser.add_argument('Body', type=str, help='Body of Email')
 
+args = parser.parse_args()
+
 
 class SendWithNoAttachment:
     """ Sends emails without attachments """ 
