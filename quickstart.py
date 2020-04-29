@@ -11,10 +11,12 @@ able to download attachments directly onto the device.
 """
 parser = argparse.ArgumentParser(description="Enter valid email information")
 parser.add_argument('Email', type=str, help='Receiver email address')
-parser.add_argument('Subject Line', type=str, help='Subject Line of Email')
+parser.add_argument('SubjectLine', type=str, help='Subject Line of Email')
 parser.add_argument('Body', type=str, help='Body of Email')
 
 args = parser.parse_args()
+
+
 
 
 class SendWithNoAttachment:
@@ -69,7 +71,9 @@ class Introduction:
     def start(self):
         # Takes in user choice
         print("Welcome to the automated email system!")
-        print(args)
+        print(args.Email)
+        print(args.Body)
+        print(args.SubjectLine)
         initialResp = input("[S]end without attachments, [W]ith attachments, [R]ead?, or [D]ownload?: ")
         return initialResp
 
@@ -78,10 +82,7 @@ if __name__ == "__main__":
     begin = Introduction() # Introduction object acts as starting screen
     initial = begin.start()
     if initial == "S": # User wants to send an email
-        emails = input("Email Address?: ")
-        subject = input("Subject Line?: ")
-        bodyText = input("Body text?: ")
-        newSenderWithNone = SendWithNoAttachment(emails, subject, bodyText).sender()
+        newSenderWithNone = SendWithNoAttachment(args.Email, args.SubjectLine, args.Body).sender()
     elif initial == "W": # User wants to send email with attachments
         emails = input("Email Address?: ")
         subject = input("Subject Line?: ")
